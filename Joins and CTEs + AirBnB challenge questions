@@ -88,3 +88,16 @@ GROUP BY 1
 "2015-09-16"	"50241"
 "2015-09-30"	"25667"
 "2015-10-01"	"51081"
+
+Air BnB Cities Challenge
+
+select 
+*
+from
+listings
+order by price desc
+limit 1
+
+Results = 
+id            name                                                host_id   host name         neighborhood                latitude            longitude               roomtype     PRICE   min nights     
+"19686192"	"diervriendelijk appartementje aan rand Amsterdam"	"138283471"	"Marianne"	""	"IJburg - Zeeburgereiland"	"52.3521462698414"	"5.00480155573649"	"Private room"	"5000.0"	"3"	"0"	""	""	"1"	"0"
