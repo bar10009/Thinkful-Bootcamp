@@ -1,6 +1,5 @@
 Air BnB Cities Challenge
-
-select 
+Qestion #1: What's the most expensive listing?
 *
 from
 listings
@@ -10,3 +9,39 @@ limit 1
 Results = 
 id            name                                                host_id   host name         neighborhood                latitude            longitude               roomtype     PRICE   min nights     
 "19686192"	"diervriendelijk appartementje aan rand Amsterdam"	"138283471"	"Marianne"	""	"IJburg - Zeeburgereiland"	"52.3521462698414"	"5.00480155573649"	"Private room"	"5000.0"	"3"	"0"	""	""	"1"	"0"
+
+What else can you tell me about the listing?
+I can tell you that the most expensive listing is hoste by Marianne who's listing is located in the neighborhood of IJ - Zeeburgereiland and that it is a privated room avilable for a minimum of 3 three nights and the max isn't specified. This is the information that I deem immediately relevant to a prosective buyer but beyond that I can tell you the
+longitude and latitude of the listing, name of the listing, host_id, id, calculated number of host listings.  
+
+Question #2: What neighborhoods seem to be the most popular?
+SELECT
+  listings.neighbourhood,
+  count(*)
+FROM
+  listings
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 22
+
+--What time of year is the cheapest time to go to your city? What about the busiest?
+select 
+strftime('%m', DATE(reviews.date)) Month,
+avg(listings.price)
+from
+listings
+join
+reviews
+on
+reviews.listing_id=listings.id
+group by 1
+order by 2
+
+--Busiest time to go to the city.
+select
+strftime('%m', DATE(reviews.date)) Month,
+count(*)
+from
+reviews
+group by 1
+order by 2 desc
